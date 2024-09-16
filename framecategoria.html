@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Categoria</title>
+    <link rel="icon" type="image/png" href="ped1.png">
+    <style>
+
+.digita {
+color: black;
+font-size: 16px;
+}
+
+.form-submit-button {
+background: lightblue;
+color: black;
+border: 1px solid black;
+border-radius: 10px;
+text-shadow: none;
+font-size: 16px;
+font-weight: bold;
+spacing:30px;
+}
+
+.form-submit-button:hover {
+background: red;
+color: yellow;
+border: 4px outset black;
+border-radius: 20px;
+text-shadow: none;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div align="center">
+    <center>
+       <table border="1" cellpadding="0" cellspacing="0" width=100%>
+        <tr>
+            <td bgcolor="lightgreen" width=100%> 
+            <font color="black" face="Arial" size=4><b>
+                <p align="center" id="topo">Cadastro de Categoria</p></b>
+            </font>
+            </td>
+        </tr>
+        <tr>
+            <td>
+          <form method="POST">
+          <input type="hidden" name="operacao" value="incluir">
+          <table border="0" cellpadding="20">
+            <td><p></p></td>
+            <td width="40%" align="center">
+            <font color="black" face="Arial" size=4>
+              <b>Código:</b>
+              <input class="digita" type="text" id="codigo" name="codigo">
+              <br>
+            </font>
+           </td>
+           <td width="50%" align="left">
+            <font color="black" face="Arial" size=4>
+                <b>Descrição:</b>
+                <input class="digita" type="text" id="categoria" name="categoria" size="50">
+                <br>
+            </font>
+           </td>
+           <td width="10%" align="center">
+            <font color="black" face="Arial" size=4>
+            <input class="form-submit-button" type="submit" value="Salvar" name="salvar">
+            </font>
+            </td>
+        </table>
+    </form>
+</td>
+
+<tr>
+<td bgcolor="lightgreen">
+    <form method="POST">
+    <input type="hidden" name="operacao" value="consulta">
+    <table width="100%" border="1" cellpadding="10" style="border-collapse:collapse;">
+        <td width="20%" align="center">
+            <input class="form-submit-button" type="submit" value="Consultar" name="consultar">
+        </td>
+        <td width="20%" align="center">
+      <font color="black" face="Arial" size=4>
+        Código
+      </font>
+     </td>
+     <td width="60%" align="center">
+      <font color="black" face="Arial" size=4>
+          Descrição
+      </font>
+     </td>
+  </table>
+</form>
+</td>
+</tr>
+
+</tr>
+    </table>
+    </center>
+</div>
+
+</body>
+</html>
