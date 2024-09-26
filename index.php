@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Categoria</title>
+    <title>Cadastro Unidade de Medida</title>
     <link rel="icon" type="image/png" href="ped1.png">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,7 +20,7 @@ $categoriatela="";
         <tr> // Linha com uma coluna com o título o cadastro
             <td bgcolor="black" width=100%> 
               <font color="white" face="Arial" size=4><b>
-                <p align="center" id="topo">Cadastro de Categoria</p></b>
+                <p align="center" id="topo">Cadastro de Unidade de Medida</p></b>
               </font>
             </td>
         </tr>
@@ -37,7 +37,7 @@ $categoriatela="";
                  </td>
                  <td width="50%" align="left">
                   <font color="black" face="Arial" size=4><b>Descrição:</b>
-                   <input class="digita" type="text" id="categoria" name="categoria" size="50"><br>
+                   <input class="digita" type="text" id="undmedida" name="undmedida" size="50"><br>
                   </font>
                  </td>
                  <td width="10%" align="center">
@@ -102,7 +102,8 @@ if(array_key_exists('salvar', $_POST) or array_key_exists('consultar', $_POST))
         }
         else
         {
-            $select = mysqli_query($conectar, "SELECT * FROM Categoria WHERE CatCodigo = '$codigo'");
+            $select = mysqli_query($conectar, "SELECT * FROM Undmedida WHERE UndCodigo = '$codigo'");
+
             $row = mysqli_fetch_assoc($select);
             $linhas = mysqli_num_rows($select);
             if( $linhas == 1){
@@ -118,7 +119,7 @@ if(array_key_exists('salvar', $_POST) or array_key_exists('consultar', $_POST))
                 }
             }
             else {
-                $query = "INSERT INTO Categoria (CatCodigo, CatDescricao) VALUES ('$codigo','$categoria')";
+                $query = "INSERT INTO Undmedida (UndCodigo, UndDescricao) VALUES ('$codigo','$undmedida')";
                 $insert = mysqli_query($conectar, $query);        
                 if($insert){
                   echo"<script language='javascript' type='text/javascript'>
@@ -182,6 +183,5 @@ if(array_key_exists('salvar', $_POST) or array_key_exists('consultar', $_POST))
 
 
   
-
 
 
