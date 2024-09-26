@@ -12,22 +12,22 @@
 
 <?php
 $idtela="";
-$categoriatela="";
+$undmedidatela="";
 ?>
 <div align="center">
     <center>
        <table border="1" cellpadding="0" cellspacing="0" width=100%>
-        <tr> // Linha com uma coluna com o título o cadastro
+        <tr> 
             <td bgcolor="black" width=100%> 
               <font color="white" face="Arial" size=4><b>
                 <p align="center" id="topo">Cadastro de Unidade de Medida</p></b>
               </font>
             </td>
         </tr>
-        <tr> // Linha com tabela e formulário de Categorias
+        <tr> 
             <td>
              <form method="POST">
-              <input type="hidden" name="operacao" value="incluir"> // Variável oculta “operacao”
+              <input type="hidden" name="operacao" value="incluir"> 
               <table border="0" cellpadding="20">
                  <td><p></p></td>
                  <td width="40%" align="center">
@@ -49,7 +49,7 @@ $categoriatela="";
               </form>
              </td>
       </tr>
- <tr> // Linha com cabeçalho da lista de Categorias cadastradas e botão de consulta
+ <tr> 
   <td bgcolor="darkgray">
     <form method="POST">
      <input type="hidden" name="operacao" value="consulta">
@@ -77,14 +77,14 @@ if (isset($_GET["id"]) && isset($_GET["descricao"]))
 {
 
   echo"<script language='javascript' type='text/javascript'>
-  document.getElementById('topo').innerHTML='Alteração de Cadastro de Categoria';
+  document.getElementById('topo').innerHTML='Alteração de Cadastro de undmedida';
   </script>";
 
-  $idcategoria=$_GET["id"];
-  $nomecategoria=$_GET["descricao"];
+  $idundmedida=$_GET["id"];
+  $nomeundmedida=$_GET["descricao"];
   echo"<script language='javascript' type='text/javascript'>
-  document.getElementById('codigo').value='$idcategoria';
-  document.getElementById('categoria').value='$nomecategoria';
+  document.getElementById('codigo').value='$idundmedida';
+  document.getElementById('undmedida').value='$nomeundmedida';
   </script>";
 }
 
@@ -94,7 +94,7 @@ if(array_key_exists('salvar', $_POST) or array_key_exists('consultar', $_POST))
     mysqli_set_charset($conectar, "utf8");
    if (array_key_exists('salvar', $_POST)) {
         $codigo = intval($_POST['codigo']) +0;
-        $categoria = $_POST['categoria'];
+        $undmedida = $_POST['undmedida'];
         if ($codigo == "" || $codigo == null || $codigo == 0 || is_nan($codigo))
         {
             echo"<script language='javascript' type='text/javascript'>
@@ -107,15 +107,15 @@ if(array_key_exists('salvar', $_POST) or array_key_exists('consultar', $_POST))
             $row = mysqli_fetch_assoc($select);
             $linhas = mysqli_num_rows($select);
             if( $linhas == 1){
-                $query = "UPDATE Categoria SET CatCodigo = '$codigo' , CatDescricao = '$categoria' WHERE CatCodigo = '$codigo'";
+                $query = "UPDATE undmedida SET CatCodigo = '$codigo' , CatDescricao = '$undmedida' WHERE CatCodigo = '$codigo'";
                 $insert = mysqli_query($conectar, $query);        
                 if($insert){
                   echo"<script language='javascript' type='text/javascript'>
-                  alert('Categoria atualizada com sucesso!');</script>";
+                  alert('undmedida atualizada com sucesso!');</script>";
                 }
                 else{
                   echo"<script language='javascript' type='text/javascript'>
-                  alert('Não foi possível atualizar essa categoria');</script>";
+                  alert('Não foi possível atualizar essa undmedida');</script>";
                 }
             }
             else {
@@ -123,18 +123,18 @@ if(array_key_exists('salvar', $_POST) or array_key_exists('consultar', $_POST))
                 $insert = mysqli_query($conectar, $query);        
                 if($insert){
                   echo"<script language='javascript' type='text/javascript'>
-                  alert('Categoria cadastrada com sucesso!');</script>";
+                  alert('undmedida cadastrada com sucesso!');</script>";
                 }
                 else{
                   echo"<script language='javascript' type='text/javascript'>
-                  alert('Não foi possível cadastrar essa categoria');</script>";
+                  alert('Não foi possível cadastrar essa undmedida');</script>";
                 }
             }
         }
     }
    elseif (array_key_exists('consultar', $_POST))
     {
-        $sql = "SELECT * FROM Categoria";
+        $sql = "SELECT * FROM undmedida";
         $i = 0;    
         if ($result = $conectar -> query($sql)) {
           echo "<table width='100%' border='1' cellpadding='10' style='border-collapse:collapse;'>";
@@ -143,9 +143,9 @@ if(array_key_exists('salvar', $_POST) or array_key_exists('consultar', $_POST))
             $i++;
             echo "<tr>";
             echo "<td width='20%' align='center'>";
-            echo "<a href='categoria.php?id=$reg[0]&descricao=$reg[1]'>";
+            echo "<a href='undmedida.php?id=$reg[0]&descricao=$reg[1]'>";
             echo "<img src='alterar.png' width=35 height=30 title='alterar' alt='alterar'></a>&nbsp&nbsp&nbsp";
-            echo "<a href='excluircategoria.php?id=$reg[0]&descricao=$reg[1]'>";
+            echo "<a href='excluirundmedida.php?id=$reg[0]&descricao=$reg[1]'>";
             echo "<img src='lixeira.png' width=35 height=30 title='excluir' alt='excluir'></a>";
             echo "</td>";
             echo "<td width='20%'' align='center'>";
@@ -166,13 +166,13 @@ if(array_key_exists('salvar', $_POST) or array_key_exists('consultar', $_POST))
     }
     echo"<script language='javascript' type='text/javascript'>
     document.getElementById('codigo').value='';
-    document.getElementById('categoria').value='';
+    document.getElementById('undmedida').value='';
     </script>";
 
     mysqli_close($conectar);
 
     echo"<script language='javascript' type='text/javascript'>
-    document.getElementById('topo').innerHTML='Cadastro de Categoria';
+    document.getElementById('topo').innerHTML='Cadastro de undmedida';
     </script>";
     
 }
@@ -180,8 +180,4 @@ if(array_key_exists('salvar', $_POST) or array_key_exists('consultar', $_POST))
 
 </body>
 </html>
-
-
-  
-
 
